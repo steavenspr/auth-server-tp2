@@ -85,7 +85,7 @@ public class AuthService {
                     return new AuthenticationFailedException("Email not found");
                 });
 
-        if (!user.getPassword().equals(password)) {
+        if (!user.getPasswordHash().equals(password)) {
             logger.warn("Connexion échouée : mauvais mot de passe pour {}", email);
             throw new AuthenticationFailedException("Invalid password");
         }

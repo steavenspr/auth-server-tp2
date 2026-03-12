@@ -1,52 +1,42 @@
 package com.example.auth.entity;
+
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 /**
  * Entité représentant un utilisateur dans la base de données.
- * <p>
- * Cette implémentation est volontairement dangereuse et ne doit jamais
- * être utilisée en production.
- * </p>
+ * TP2 : mot de passe haché avec BCrypt, anti brute force ajouté.
  */
 @Entity
 @Table(name = "users")
 public class User {
 
-    /** Identifiant unique généré automatiquement. */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    /** Adresse email unique de l'utilisateur. */
     @Column(unique = true)
     private String email;
 
-    /**
-     * Mot de passe stocké en clair.
-     * ATTENTION : volontairement dangereux, ne jamais faire en production.
-     */
-    private String password;
+    @Column(name = "password_hash")
+    private String passwordHash;
 
-    /** Token d'authentification basique stocké en base. */
     private String token;
 
-    /** Date et heure de création du compte. */
     private LocalDateTime createdAt;
 
-    /** Constructeur vide requis par JPA. */
+    @Column(nullable = false)
+    private int failedAttempts = 0;
+
+    private LocalDateTime lockUntil;
+
     public User() {}
 
-    /**
-     * Constructeur principal pour créer un utilisateur.
-     *
-     * @param email    l'adresse email de l'utilisateur
-     * @param password le mot de passe en clair (dangereux)
-     */
-    public User(String email, String password) {
+    public User(String email, String passwordHash) {
         this.email = email;
-        this.password = password;
+        this.passwordHash = passwordHash;
         this.createdAt = LocalDateTime.now();
+        this.failedAttempts = 0;
     }
 
     public Long getId() {
@@ -65,12 +55,20 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPasswordHash() {
+        return passwordHash;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public LocalDateTime getCreatedAt() {
@@ -81,12 +79,19 @@ public class User {
         this.createdAt = createdAt;
     }
 
-    public String getToken() {
-        return token;
+    public int getFailedAttempts() {
+        return failedAttempts;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setFailedAttempts(int failedAttempts) {
+        this.failedAttempts = failedAttempts;
     }
-// getters & setters
+
+    public LocalDateTime getLockUntil() {
+        return lockUntil;
+    }
+
+    public void setLockUntil(LocalDateTime lockUntil) {
+        this.lockUntil = lockUntil;
+    }
 }
