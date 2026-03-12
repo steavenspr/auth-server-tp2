@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 import static org.junit.jupiter.api.Assertions.*;
+import com.example.auth.exception.AccountLockedException;
 
 @SpringBootTest
 @Transactional
@@ -79,5 +80,36 @@ class AuthServiceTest {
     void testGetUserByTokenInvalide() {
         assertThrows(AuthenticationFailedException.class, () ->
                 authService.getUserByToken("tokeninvalide"));
+    }
+
+    @Test
+    void testLockoutApres5Echecs() {
+        authService.register("lock@example.com", VALID_PASSWORD);
+        // 5 tentatives échouées
+        for (int i = 0; i < 5; i++) {
+            try {
+                authService.login("lock@example.com", "MauvaisMotDePasse1!");
+            } catch (AuthenticationFailedException | AccountLockedException e) {
+                // attendu
+            }
+        }
+        // La 6ème tentative doit retourner AccountLockedException
+        assertThrows(AccountLockedException.class, () ->
+                authService.login("lock@example.com", VALID_PASSWORD));
+    }
+
+    @Test
+    void testNonDivulgationErreur() {
+        authService.register("test2@example.com", VALID_PASSWORD);
+        // Email inconnu
+        AuthenticationFailedException ex1 = assertThrows(
+                AuthenticationFailedException.class, () ->
+                        authService.login("inconnu2@example.com", VALID_PASSWORD));
+        // Mauvais mot de passe
+        AuthenticationFailedException ex2 = assertThrows(
+                AuthenticationFailedException.class, () ->
+                        authService.login("test2@example.com", "MauvaisMotDePasse1!"));
+        // Les deux messages doivent être identiques
+        assertEquals(ex1.getMessage(), ex2.getMessage());
     }
 }

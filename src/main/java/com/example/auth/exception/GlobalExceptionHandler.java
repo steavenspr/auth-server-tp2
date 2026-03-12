@@ -31,6 +31,12 @@ public class GlobalExceptionHandler {
         return buildResponse(HttpStatus.CONFLICT, ex.getMessage(), request.getRequestURI());
     }
 
+    @ExceptionHandler(AccountLockedException.class)
+    public ResponseEntity<Map<String, Object>> handleAccountLocked(
+            AccountLockedException ex, HttpServletRequest request) {
+        return buildResponse(HttpStatus.LOCKED, ex.getMessage(), request.getRequestURI());
+    }
+
     private ResponseEntity<Map<String, Object>> buildResponse(
             HttpStatus status, String message, String path) {
         Map<String, Object> body = new HashMap<>();

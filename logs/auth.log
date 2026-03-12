@@ -143,3 +143,154 @@ This generated password is for development use only. Your security configuration
 2026-03-12T22:51:16.684+04:00  INFO 5908 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2026-03-12T22:51:16.688+04:00  INFO 5908 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2026-03-12T22:51:16.714+04:00  INFO 5908 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-03-12T22:55:28.996+04:00  INFO 23792 --- [main] com.example.auth.AuthApplicationTests    : Starting AuthApplicationTests using Java 17.0.17 with PID 23792 (started by steav in C:\Users\steav\IdeaProjects\auth-tp2)
+2026-03-12T22:55:28.999+04:00  INFO 23792 --- [main] com.example.auth.AuthApplicationTests    : No active profile set, falling back to 1 default profile: "default"
+2026-03-12T22:55:30.205+04:00  INFO 23792 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-12T22:55:30.308+04:00  INFO 23792 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 85 ms. Found 1 JPA repository interface.
+2026-03-12T22:55:31.208+04:00  INFO 23792 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-12T22:55:31.334+04:00  INFO 23792 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.42.Final
+2026-03-12T22:55:31.403+04:00  INFO 23792 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-03-12T22:55:31.998+04:00  INFO 23792 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-12T22:55:32.079+04:00  INFO 23792 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-12T22:55:32.640+04:00  INFO 23792 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@24b3f778
+2026-03-12T22:55:32.648+04:00  INFO 23792 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-12T22:55:32.832+04:00  INFO 23792 --- [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 9.1
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-12T22:55:33.905+04:00  INFO 23792 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-12T22:55:33.965+04:00  INFO 23792 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-12T22:55:34.615+04:00  WARN 23792 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-12T22:55:35.024+04:00  WARN 23792 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 2d1d4bc9-c68f-4658-9a53-3b38a13f1fb9
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-03-12T22:55:35.038+04:00  INFO 23792 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-03-12T22:55:35.718+04:00  INFO 23792 --- [main] com.example.auth.AuthApplicationTests    : Started AuthApplicationTests in 7.412 seconds (process running for 8.794)
+2026-03-12T22:55:36.241+04:00  INFO 23792 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.auth.AuthServiceTest]: AuthServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-03-12T22:55:36.248+04:00  INFO 23792 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.auth.AuthApplication for test class com.example.auth.AuthServiceTest
+2026-03-12T22:55:36.643+04:00  INFO 23792 --- [main] com.example.auth.service.AuthService     : Inscription réussie pour : login@example.com
+2026-03-12T22:55:36.730+04:00  INFO 23792 --- [main] com.example.auth.service.AuthService     : Connexion réussie pour : login@example.com
+2026-03-12T22:55:36.764+04:00  WARN 23792 --- [main] com.example.auth.service.AuthService     : Connexion échouée : email inconnu inconnu@example.com
+2026-03-12T22:55:36.884+04:00  INFO 23792 --- [main] com.example.auth.service.AuthService     : Inscription réussie pour : login2@example.com
+2026-03-12T22:55:36.960+04:00  WARN 23792 --- [main] com.example.auth.service.AuthService     : Connexion échouée : mauvais mot de passe pour login2@example.com (1/5)
+2026-03-12T22:55:37.046+04:00  INFO 23792 --- [main] com.example.auth.service.AuthService     : Inscription réussie pour : double@example.com
+2026-03-12T22:55:37.052+04:00  WARN 23792 --- [main] com.example.auth.service.AuthService     : Inscription échouée : email déjà existant pour double@example.com
+2026-03-12T22:55:37.066+04:00  WARN 23792 --- [main] com.example.auth.service.AuthService     : Inscription échouée : email vide
+2026-03-12T22:55:37.183+04:00  INFO 23792 --- [main] com.example.auth.service.AuthService     : Inscription réussie pour : test@example.com
+2026-03-12T22:55:37.324+04:00  INFO 23792 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-12T22:55:37.336+04:00  INFO 23792 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-03-12T22:55:37.356+04:00  INFO 23792 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-03-12T22:56:32.899+04:00  INFO 25508 --- [main] com.example.auth.AuthApplicationTests    : Starting AuthApplicationTests using Java 17.0.17 with PID 25508 (started by steav in C:\Users\steav\IdeaProjects\auth-tp2)
+2026-03-12T22:56:32.900+04:00  INFO 25508 --- [main] com.example.auth.AuthApplicationTests    : No active profile set, falling back to 1 default profile: "default"
+2026-03-12T22:56:33.963+04:00  INFO 25508 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-12T22:56:34.050+04:00  INFO 25508 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 74 ms. Found 1 JPA repository interface.
+2026-03-12T22:56:34.907+04:00  INFO 25508 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-12T22:56:34.997+04:00  INFO 25508 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.42.Final
+2026-03-12T22:56:35.055+04:00  INFO 25508 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-03-12T22:56:35.628+04:00  INFO 25508 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-12T22:56:35.679+04:00  INFO 25508 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-12T22:56:36.099+04:00  INFO 25508 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@71d99732
+2026-03-12T22:56:36.104+04:00  INFO 25508 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-12T22:56:36.232+04:00  INFO 25508 --- [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 9.1
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-12T22:56:37.515+04:00  INFO 25508 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-12T22:56:37.593+04:00  INFO 25508 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-12T22:56:38.146+04:00  WARN 25508 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-12T22:56:38.600+04:00  WARN 25508 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 7482f5a2-3e40-4f06-a356-a8c2e8d01908
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-03-12T22:56:38.624+04:00  INFO 25508 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-03-12T22:56:39.992+04:00  INFO 25508 --- [main] com.example.auth.AuthApplicationTests    : Started AuthApplicationTests in 7.55 seconds (process running for 8.746)
+2026-03-12T22:56:41.316+04:00  INFO 25508 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.auth.AuthServiceTest]: AuthServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-03-12T22:56:41.329+04:00  INFO 25508 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.auth.AuthApplication for test class com.example.auth.AuthServiceTest
+2026-03-12T22:56:42.297+04:00  INFO 25508 --- [main] com.example.auth.service.AuthService     : Inscription réussie pour : lock@example.com
+2026-03-12T22:56:42.399+04:00  WARN 25508 --- [main] com.example.auth.service.AuthService     : Connexion échouée : mauvais mot de passe pour lock@example.com (1/5)
+2026-03-12T22:56:42.499+04:00  WARN 25508 --- [main] com.example.auth.service.AuthService     : Connexion échouée : mauvais mot de passe pour lock@example.com (2/5)
+2026-03-12T22:56:42.581+04:00  WARN 25508 --- [main] com.example.auth.service.AuthService     : Connexion échouée : mauvais mot de passe pour lock@example.com (3/5)
+2026-03-12T22:56:42.661+04:00  WARN 25508 --- [main] com.example.auth.service.AuthService     : Connexion échouée : mauvais mot de passe pour lock@example.com (4/5)
+2026-03-12T22:56:42.740+04:00  WARN 25508 --- [main] com.example.auth.service.AuthService     : Compte bloqué après 5 échecs pour lock@example.com
+2026-03-12T22:56:42.933+04:00  INFO 25508 --- [main] com.example.auth.service.AuthService     : Inscription réussie pour : login@example.com
+2026-03-12T22:56:43.025+04:00  INFO 25508 --- [main] com.example.auth.service.AuthService     : Connexion réussie pour : login@example.com
+2026-03-12T22:56:43.070+04:00  WARN 25508 --- [main] com.example.auth.service.AuthService     : Connexion échouée : email inconnu inconnu@example.com
+2026-03-12T22:56:43.172+04:00  INFO 25508 --- [main] com.example.auth.service.AuthService     : Inscription réussie pour : login2@example.com
+2026-03-12T22:56:43.262+04:00  WARN 25508 --- [main] com.example.auth.service.AuthService     : Connexion échouée : mauvais mot de passe pour login2@example.com (1/5)
+2026-03-12T22:56:43.386+04:00  INFO 25508 --- [main] com.example.auth.service.AuthService     : Inscription réussie pour : double@example.com
+2026-03-12T22:56:43.392+04:00  WARN 25508 --- [main] com.example.auth.service.AuthService     : Inscription échouée : email déjà existant pour double@example.com
+2026-03-12T22:56:43.443+04:00  WARN 25508 --- [main] com.example.auth.service.AuthService     : Inscription échouée : email vide
+2026-03-12T22:56:43.536+04:00  INFO 25508 --- [main] com.example.auth.service.AuthService     : Inscription réussie pour : test2@example.com
+2026-03-12T22:56:43.542+04:00  WARN 25508 --- [main] com.example.auth.service.AuthService     : Connexion échouée : email inconnu inconnu2@example.com
+2026-03-12T22:56:43.616+04:00  WARN 25508 --- [main] com.example.auth.service.AuthService     : Connexion échouée : mauvais mot de passe pour test2@example.com (1/5)
+2026-03-12T22:56:43.723+04:00  INFO 25508 --- [main] com.example.auth.service.AuthService     : Inscription réussie pour : test@example.com
+2026-03-12T22:56:43.833+04:00  INFO 25508 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-12T22:56:43.855+04:00  INFO 25508 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-03-12T22:56:43.871+04:00  INFO 25508 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-03-12T22:59:16.491+04:00  INFO 24356 --- [main] com.example.auth.AuthApplicationTests    : Starting AuthApplicationTests using Java 17.0.17 with PID 24356 (started by steav in C:\Users\steav\IdeaProjects\auth-tp2)
+2026-03-12T22:59:16.492+04:00  INFO 24356 --- [main] com.example.auth.AuthApplicationTests    : No active profile set, falling back to 1 default profile: "default"
+2026-03-12T22:59:17.551+04:00  INFO 24356 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-12T22:59:17.646+04:00  INFO 24356 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 83 ms. Found 1 JPA repository interface.
+2026-03-12T22:59:18.346+04:00  INFO 24356 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-12T22:59:18.456+04:00  INFO 24356 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.42.Final
+2026-03-12T22:59:18.517+04:00  INFO 24356 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-03-12T22:59:19.029+04:00  INFO 24356 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-12T22:59:19.077+04:00  INFO 24356 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-12T22:59:19.486+04:00  INFO 24356 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@839755f
+2026-03-12T22:59:19.490+04:00  INFO 24356 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-12T22:59:19.578+04:00  INFO 24356 --- [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 9.1
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-12T22:59:20.653+04:00  INFO 24356 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-12T22:59:20.736+04:00  INFO 24356 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-12T22:59:21.195+04:00  WARN 24356 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-12T22:59:21.555+04:00  WARN 24356 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 8df19232-b269-4004-b5d3-6c8716ee952f
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-03-12T22:59:21.567+04:00  INFO 24356 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-03-12T22:59:23.110+04:00  INFO 24356 --- [main] com.example.auth.AuthApplicationTests    : Started AuthApplicationTests in 7.048 seconds (process running for 8.213)
+2026-03-12T22:59:23.737+04:00  INFO 24356 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.auth.AuthServiceTest]: AuthServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-03-12T22:59:23.752+04:00  INFO 24356 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.auth.AuthApplication for test class com.example.auth.AuthServiceTest
+2026-03-12T22:59:24.134+04:00  INFO 24356 --- [main] com.example.auth.service.AuthService     : Inscription réussie pour : lock@example.com
+2026-03-12T22:59:24.217+04:00  WARN 24356 --- [main] com.example.auth.service.AuthService     : Connexion échouée : mauvais mot de passe pour lock@example.com (1/5)
+2026-03-12T22:59:24.300+04:00  WARN 24356 --- [main] com.example.auth.service.AuthService     : Connexion échouée : mauvais mot de passe pour lock@example.com (2/5)
+2026-03-12T22:59:24.375+04:00  WARN 24356 --- [main] com.example.auth.service.AuthService     : Connexion échouée : mauvais mot de passe pour lock@example.com (3/5)
+2026-03-12T22:59:24.453+04:00  WARN 24356 --- [main] com.example.auth.service.AuthService     : Connexion échouée : mauvais mot de passe pour lock@example.com (4/5)
+2026-03-12T22:59:24.528+04:00  WARN 24356 --- [main] com.example.auth.service.AuthService     : Compte bloqué après 5 échecs pour lock@example.com
+2026-03-12T22:59:24.535+04:00  WARN 24356 --- [main] com.example.auth.service.AuthService     : Connexion échouée : compte bloqué pour lock@example.com
+2026-03-12T22:59:24.657+04:00  INFO 24356 --- [main] com.example.auth.service.AuthService     : Inscription réussie pour : login@example.com
+2026-03-12T22:59:24.736+04:00  INFO 24356 --- [main] com.example.auth.service.AuthService     : Connexion réussie pour : login@example.com
+2026-03-12T22:59:24.767+04:00  WARN 24356 --- [main] com.example.auth.service.AuthService     : Connexion échouée : email inconnu inconnu@example.com
+2026-03-12T22:59:24.875+04:00  INFO 24356 --- [main] com.example.auth.service.AuthService     : Inscription réussie pour : login2@example.com
+2026-03-12T22:59:24.955+04:00  WARN 24356 --- [main] com.example.auth.service.AuthService     : Connexion échouée : mauvais mot de passe pour login2@example.com (1/5)
+2026-03-12T22:59:25.042+04:00  INFO 24356 --- [main] com.example.auth.service.AuthService     : Inscription réussie pour : double@example.com
+2026-03-12T22:59:25.045+04:00  WARN 24356 --- [main] com.example.auth.service.AuthService     : Inscription échouée : email déjà existant pour double@example.com
+2026-03-12T22:59:25.063+04:00  WARN 24356 --- [main] com.example.auth.service.AuthService     : Inscription échouée : email vide
+2026-03-12T22:59:25.152+04:00  INFO 24356 --- [main] com.example.auth.service.AuthService     : Inscription réussie pour : test2@example.com
+2026-03-12T22:59:25.154+04:00  WARN 24356 --- [main] com.example.auth.service.AuthService     : Connexion échouée : email inconnu inconnu2@example.com
+2026-03-12T22:59:25.229+04:00  WARN 24356 --- [main] com.example.auth.service.AuthService     : Connexion échouée : mauvais mot de passe pour test2@example.com (1/5)
+2026-03-12T22:59:25.332+04:00  INFO 24356 --- [main] com.example.auth.service.AuthService     : Inscription réussie pour : test@example.com
+2026-03-12T22:59:25.441+04:00  INFO 24356 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-12T22:59:25.444+04:00  INFO 24356 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-03-12T22:59:25.461+04:00  INFO 24356 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

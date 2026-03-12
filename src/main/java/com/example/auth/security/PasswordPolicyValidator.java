@@ -11,6 +11,9 @@ public class PasswordPolicyValidator {
 
     private static final int MIN_LENGTH = 12;
 
+    // Classe utilitaire — pas d'instanciation
+    private PasswordPolicyValidator() {}
+
     /**
      * Valide le mot de passe selon la politique de sécurité.
      * Lance une InvalidInputException si le mot de passe ne respecte pas les règles.

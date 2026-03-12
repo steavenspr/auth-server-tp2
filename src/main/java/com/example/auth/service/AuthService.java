@@ -11,11 +11,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.UUID;
+import com.example.auth.exception.AccountLockedException;
+import java.time.LocalDateTime;
 
 /**
  * Service principal gérant la logique d'authentification.
  * <p>
- * TP2 améliore le stockage mais ne protège pas encore contre le rejeu.
+ * TP2 améliore le stockage, mais ne protège pas encore contre le rejeu.
  * Le hash circule encore dans la phase de login et reste rejouable
  * si une requête est capturée. Ce problème sera corrigé au TP3.
  * </p>
@@ -57,51 +59,69 @@ public class AuthService {
         }
 
         if (!email.contains("@")) {
-            logger.warn("Inscription échouée : format email invalide pour {}", email);
+            logger.warn("Inscription échouée : format email invalide pour {}", email.replaceAll("[\r\n]", ""));
             throw new InvalidInputException("Invalid email format");
         }
 
         PasswordPolicyValidator.validate(password);
 
         if (userRepository.findByEmail(email).isPresent()) {
-            logger.warn("Inscription échouée : email déjà existant pour {}", email);
+            logger.warn("Inscription échouée : email déjà existant pour {}", email.replaceAll("[\r\n]", ""));
             throw new ResourceConflictException("Email already exists");
         }
 
-        // Hachage du mot de passe avec BCrypt avant stockage
         String hashedPassword = passwordEncoder.encode(password);
         User user = new User(email, hashedPassword);
         userRepository.save(user);
-        logger.info("Inscription réussie pour : {}", email);
+        logger.info("Inscription réussie pour : {}", email.replaceAll("[\r\n]", ""));
         return user;
     }
 
     /**
      * Authentifie un utilisateur et retourne un token.
      * Vérifie le mot de passe avec BCrypt.
+     * Bloque le compte après cinq échecs consécutifs pendant deux minutes.
      *
      * @param email    l'adresse email de l'utilisateur
      * @param password le mot de passe en clair
      * @return le token d'authentification généré
      * @throws AuthenticationFailedException si l'email ou le mot de passe est incorrect
+     * @throws AccountLockedException        si le compte est temporairement bloqué
      */
     public String login(String email, String password) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> {
-                    logger.warn("Connexion échouée : email inconnu {}", email);
-                    return new AuthenticationFailedException("Email not found");
+                    logger.warn("Connexion échouée : email inconnu {}", email.replaceAll("[\r\n]", ""));
+                    return new AuthenticationFailedException("Authentication failed");
                 });
 
-        // Vérification du mot de passe avec BCrypt
-        if (!passwordEncoder.matches(password, user.getPasswordHash())) {
-            logger.warn("Connexion échouée : mauvais mot de passe pour {}", email);
-            throw new AuthenticationFailedException("Invalid password");
+        if (user.getLockUntil() != null && user.getLockUntil().isAfter(LocalDateTime.now())) {
+            logger.warn("Connexion échouée : compte bloqué pour {}", email.replaceAll("[\r\n]", ""));
+            throw new AccountLockedException("Account is locked. Please try again later.");
         }
 
+        if (!passwordEncoder.matches(password, user.getPasswordHash())) {
+            user.setFailedAttempts(user.getFailedAttempts() + 1);
+
+            if (user.getFailedAttempts() >= 5) {
+                user.setLockUntil(LocalDateTime.now().plusMinutes(2));
+                userRepository.save(user);
+                logger.warn("Compte bloqué après 5 échecs pour {}", email.replaceAll("[\r\n]", ""));
+                throw new AccountLockedException("Account is locked. Please try again later.");
+            }
+
+            userRepository.save(user);
+            logger.warn("Connexion échouée : mauvais mot de passe pour {} ({}/5)",
+                    email.replaceAll("[\r\n]", ""), user.getFailedAttempts());
+            throw new AuthenticationFailedException("Authentication failed");
+        }
+
+        user.setFailedAttempts(0);
+        user.setLockUntil(null);
         String token = UUID.randomUUID().toString();
         user.setToken(token);
         userRepository.save(user);
-        logger.info("Connexion réussie pour : {}", email);
+        logger.info("Connexion réussie pour : {}", email.replaceAll("[\r\n]", ""));
         return token;
     }
 
