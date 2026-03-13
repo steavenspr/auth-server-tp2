@@ -33,11 +33,14 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Build, test and analyze
+      - name: Run tests and generate JaCoCo report
+        run: mvn -B verify
+
+      - name: Analyze with SonarCloud
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          mvn -B verify sonar:sonar \
+          mvn -B sonar:sonar \
             -Dsonar.projectKey=steavenspr_auth-server-tp2 \
             -Dsonar.organization=steavenspr \
             -Dsonar.host.url=https://sonarcloud.io
