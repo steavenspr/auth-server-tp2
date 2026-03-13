@@ -112,4 +112,25 @@ class AuthServiceTest {
         // Les deux messages doivent être identiques
         assertEquals(ex1.getMessage(), ex2.getMessage());
     }
+
+    @Test
+    void testRegisterEmailSansArobase() {
+        assertThrows(InvalidInputException.class, () ->
+                authService.register("emailsansarobase", VALID_PASSWORD));
+    }
+
+    @Test
+    void testLoginRetourneToken() {
+        authService.register("token@example.com", VALID_PASSWORD);
+        String token = authService.login("token@example.com", VALID_PASSWORD);
+        assertNotNull(token);
+        assertFalse(token.isEmpty());
+    }
+
+    @Test
+    void testGetUserByTokenValide() {
+        authService.register("valid@example.com", VALID_PASSWORD);
+        String token = authService.login("valid@example.com", VALID_PASSWORD);
+        assertDoesNotThrow(() -> authService.getUserByToken(token));
+    }
 }
